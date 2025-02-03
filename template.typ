@@ -1,15 +1,19 @@
-#let standard_box = [
-  #rect(width: 100%, height: 15pt, stroke: 0.5pt)
+#let standard_box(text: "") = {
+  rect(width: 100%, height: 15pt, stroke: 0.5pt, text)
+}
+
+#let small_box = [
+  #rect(width: 15pt, height: 15pt, stroke: 0.5pt)
 ]
 
 #let small_box = [
   #rect(width: 15pt, height: 15pt, stroke: 0.5pt)
 ]
 
-#let header = [
+#let  header(callsign, type) = {[
   #text(6pt)[
 #table(columns: (25%, 25%, 25%, 25%), stroke: (none), row-gutter: -8pt
-)[Callsign][Type][Sartime UTC][Sartime Local][#standard_box][#standard_box][#standard_box][#standard_box][ETD][FORECAST][NOTAM][W & B][#standard_box][#table(columns: (1fr, 1fr, 1fr), inset: 0pt,
+)[Callsign][Type][Sartime UTC][Sartime Local][#standard_box(text: callsign)][#standard_box(text: type)][#standard_box()][#standard_box()][ETD][FORECAST][NOTAM][W & B][#standard_box()][#table(columns: (1fr, 1fr, 1fr), inset: 0pt,
   align: horizon,
   stroke: (none),
   [#small_box],
@@ -24,8 +28,8 @@
 )][#table(columns: (1fr, 1fr), inset: 0pt,
   align: horizon,
   stroke: (none),
-  [#standard_box],
-  [#standard_box],
+  [#standard_box()],
+  [#standard_box()],
 )][][#text(size: 6pt)[#table(columns: (1fr, 1fr, 1fr), inset: 0pt,
   align: horizon,
   stroke: (none),
@@ -44,7 +48,7 @@
   [WGT KG],
   [CG %],
 )]]]
-]
+]}
 
 #let nav_log = [
   #box(height: 30%)[
@@ -140,9 +144,9 @@
   ]
 ]
 
-#let sheet(aircraft: "both", variant: "1", doc) = [
+#let sheet(aircraft: "both", callsign: "", type: " ",  variant: "1", doc) = [
   #set text(font: "Roboto", size: 10pt)
-  #show "something cool": [Typst]
+
   #set page(
     paper: "a5",
     margin: (top: 0.45in, bottom: 0.5in, left: 0.25in, right: 0.25in),
@@ -152,7 +156,7 @@
     number-align: center
   )
   Nav Log
-  #header
+  #header(callsign, type)
   #nav_log
   #fuel_com_log
   #notes_and_divert

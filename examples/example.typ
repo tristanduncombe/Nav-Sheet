@@ -1,4 +1,4 @@
-#import("./template.typ"): sheet
+#import("../template.typ"): sheet
 #show: sheet.with(
   aircraft: "fixed-wing",
 )
