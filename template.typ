@@ -75,17 +75,27 @@
       [REV EST],
       [ATA ATD],
     )]
-  ],
+  ]
 ]
 
 #let fuel_com_log = [
   #box(height:28%)[
   #text(6pt)[
-  #columns(2)[
+  #columns(3)[
     Fuel Track
     #table(columns:(0.75fr, 1fr, 1fr), stroke: 0.5pt)[Time][Left][Right][(#h(0.5fr))][][][(#h(0.5fr))][][][(#h(0.5fr))][][][(#h(0.5fr))][][][(#h(0.5fr))][][][(#h(0.5fr))][][][(#h(0.5fr))][][][(#h(0.5fr))][][]
     Nav/Com Freq
     #table(columns:(0.75fr, 1fr, 1fr), stroke: 0.5pt)[At][Com 1][Com 2][#v(4pt)][][][#v(4pt)][][][#v(4pt)][][][#v(4pt)][][][#v(4pt)][][][#v(4pt)][][][#v(4pt)][][][#v(4pt)][][]
+    Fuel
+      #table(columns:(1fr, 1fr, 1fr), stroke: 0.5pt, rows: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
+      fill: (x, y) =>
+        if y == 0 { rgb("#f0f0f0") }
+        else if y == 1 and x == 1 { black }
+        else if y == 7 { rgb("#f0f0f0") }
+        else { white },
+
+      )[*FUEL*][*MIN*][*LITRES*][TAXI][][][TRIP\*][][][V RESERVE][][][ALTERNATE][][][F RESERVE][][][HOLDING][][][*REQUIRED*][][][MARGIN][][][ENDURANCE]]
+      ]
   ]]
   ]
 ]
@@ -100,10 +110,13 @@
       (bottom: 0.5pt + black)
       }, rows: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr))
     
-
       Divert
-      #table(columns:(1fr, 1fr, 1fr, 1fr, 1fr, 1fr), stroke: 0.5pt, rows: (1.45fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr))[POSN][FL/ALT][HDG (M)][G/S][EET][ATA]
-    ]]
+      #table(columns:(1fr, 1fr, 1fr, 1fr, 1fr, 1fr), stroke: 0.5pt, rows: (1fr, 1fr, 1fr, 1fr))[POSN][FL/ALT][HDG (M)][G/S][EET][ATA]
+      
+      ]
+      
+      ]
+      
   ]
 ]
 
