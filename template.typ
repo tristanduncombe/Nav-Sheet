@@ -79,30 +79,30 @@
 ]
 
 #let fuel_com_log = [
-  #box(height:30%)[
+  #box(height:28%)[
   #text(6pt)[
   #columns(2)[
     Fuel Track
-    #table(columns:(0.75fr, 1fr, 1fr), stroke: 0.5pt)[Time][Left][Right][(#h(0.5fr))][][][(#h(0.5fr))][][][(#h(0.5fr))][][][(#h(0.5fr))][][][(#h(0.5fr))][][][(#h(0.5fr))][][][(#h(0.5fr))][][][(#h(0.5fr))][][][(#h(0.5fr))][][]
+    #table(columns:(0.75fr, 1fr, 1fr), stroke: 0.5pt)[Time][Left][Right][(#h(0.5fr))][][][(#h(0.5fr))][][][(#h(0.5fr))][][][(#h(0.5fr))][][][(#h(0.5fr))][][][(#h(0.5fr))][][][(#h(0.5fr))][][][(#h(0.5fr))][][]
     Nav/Com Freq
-    #table(columns:(0.75fr, 1fr, 1fr), stroke: 0.5pt)[At][Com 1][Com 2][#v(4pt)][][][#v(4pt)][][][#v(4pt)][][][#v(4pt)][][][#v(4pt)][][][#v(4pt)][][][#v(4pt)][][][#v(4pt)][][][#v(4pt)][][]
+    #table(columns:(0.75fr, 1fr, 1fr), stroke: 0.5pt)[At][Com 1][Com 2][#v(4pt)][][][#v(4pt)][][][#v(4pt)][][][#v(4pt)][][][#v(4pt)][][][#v(4pt)][][][#v(4pt)][][][#v(4pt)][][]
   ]]
   ]
 ]
 
 
 #let notes_and_divert = [
-  #box(height:20%)[
+  #box(height:22%)[
     #text(6pt)[
     #columns(2)[
       Notes
     #table(columns:(1fr, 1fr, 1fr, 1fr, 1fr, 1fr), stroke: (x, y) => {
       (bottom: 0.5pt + black)
-      }, rows: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr))
+      }, rows: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr))
     
 
       Divert
-      #table(columns:(1fr, 1fr, 1fr, 1fr, 1fr, 1fr), stroke: 0.5pt, rows: (1.45fr, 1fr, 1fr, 1fr, 1fr, 1fr))[POSN][FL/ALT][HDG (M)][G/S][EET][ATA]
+      #table(columns:(1fr, 1fr, 1fr, 1fr, 1fr, 1fr), stroke: 0.5pt, rows: (1.45fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr))[POSN][FL/ALT][HDG (M)][G/S][EET][ATA]
     ]]
   ]
 ]
