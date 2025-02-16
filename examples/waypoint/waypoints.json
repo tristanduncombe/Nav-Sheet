@@ -1,0 +1,26 @@
+[
+    {
+        "Waypoint": "Wyaralong Lake",
+        "Image": "./examples/waypoint/wyaralong.jpg"
+    },
+    {
+        "Waypoint": "Boonah",
+        "Image": "./examples/waypoint/boonah.jpg"
+    },
+    {
+        "Waypoint": "Lake Moogerah",
+        "Image": "./examples/waypoint/looh.jpg"
+    },
+    {
+        "Waypoint": "Toowoomba",
+        "Image": "./examples/waypoint/ytwb.jpg"
+    },
+    {
+        "Waypoint": "Gatton",
+        "Image": "./examples/waypoint/ygas.jpg"
+    },
+    {
+      "Waypoint": "Bromleton",
+      "Image": "./examples/waypoint/bml.jpg"
+    }
+  ]

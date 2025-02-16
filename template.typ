@@ -2,18 +2,22 @@
   rect(width: 100%, height: 15pt, stroke: 0.5pt, text)
 }
 
-#let small_box = [
-  #rect(width: 15pt, height: 15pt, stroke: 0.5pt)
-]
+#let tall_box(text: "") = {
+  rect(width: 100%, height: 1fr, stroke: 0.5pt, text)
+}
 
 #let small_box = [
   #rect(width: 15pt, height: 15pt, stroke: 0.5pt)
 ]
 
-#let  header(callsign, type) = {[
+#let small_box = [
+  #rect(width: 15pt, height: 15pt, stroke: 0.5pt)
+]
+
+#let  header(callsign, type, departure) = {[
   #text(6pt)[
 #table(columns: (25%, 25%, 25%, 25%), stroke: (none), row-gutter: -8pt
-)[Callsign][Type][Sartime][Departure Airport][#standard_box(text: callsign)][#standard_box(text: type)][#standard_box()][#standard_box()][DEPARTURE TIME][FORECAST][NOTAM][W & B][#table(columns: (1fr, 1fr), inset: 0pt,
+)[Callsign][Type][Sartime][Departure Airport][#standard_box(text: callsign)][#standard_box(text: type)][#standard_box()][#standard_box(text: departure)][DEPARTURE TIME][FORECAST][NOTAM][W & B][#table(columns: (1fr, 1fr), inset: 0pt,
   align: horizon,
   stroke: (none),
   [#standard_box()],
@@ -117,18 +121,38 @@
 ]
 
 
-#let notes_and_divert(lines) = {
+#let notes_and_divert(lines, aerodrome) = {
   box(height:22%)[
     #text(6pt)[
     #columns(2)[
-      Notes
+      
     #if lines == true {
-      [#table(columns:(1fr, 1fr, 1fr, 1fr, 1fr, 1fr), stroke: (x, y) => {
+      
+      [Notes
+      #table(columns:(1fr, 1fr, 1fr, 1fr, 1fr, 1fr), stroke: (x, y) => {
       (bottom: 0.5pt + black)
       }, rows: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr))]
 
+    } else if aerodrome == true {
+      [#text(6pt)[
+      #table(columns: (1fr, 1fr), stroke: (none)
+      )[Aerodrome][#text(size: 6pt)[#table(columns: (1fr, 1fr, 1fr), inset: 0pt,
+  align: horizon,
+  stroke: (none),
+  [Elevation],
+  [CTAF],
+  [AWIS]
+)]][#standard_box()][#table(columns: (1fr, 1fr, 1fr), inset: 0pt,
+  align: horizon,
+  stroke: (none),
+  [#standard_box()],
+  [#standard_box()],
+  [#standard_box()]
+)][Field Layout][Pilot Notes][#tall_box()][#tall_box()]
+      ]]
     } else {
-      [#table(columns:(1fr, 1fr, 1fr, 1fr, 1fr, 1fr), stroke: none, rows: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr))]
+      [Notes
+      #table(columns:(1fr, 1fr, 1fr, 1fr, 1fr, 1fr), stroke: none, rows: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr))]
 
     }
     Divert
@@ -179,8 +203,22 @@
     ]
   ]
 ]
+#let table-json(data) = {
+    let keys = data.at(0).keys()
+    table(
+      columns: keys.len(),
+      ..keys,
+      ..data.map(
+        row => keys.map(
+          key => [
+            #if key == "Image" { image(row.at(key), width: 50%) } else { row.at(key) }            
+          ]
+        )
+      ).flatten()
+    )
+}
 
-#let sheet(aircraft: "both", callsign: "", type: " ",  variant: "1", lines: bool, doc) = [
+#let sheet(aircraft: "both", callsign: "", type: "", departure: "",  variant: "1", lines: bool, waypoint: false, waypoints: "", doc) = [
   #set text(font: "Roboto", size: 10pt)
 
   #set page(
@@ -192,11 +230,17 @@
     number-align: center
   )
   Nav Log
-  #header(callsign, type)
+  #header(callsign, type, departure)
   #nav_log
   #fuel_com_log
-  #notes_and_divert(false)
-  #if variant == "2" {
+  #notes_and_divert(false, true)
+  #if variant == 2 {
     [#notes_and_fuel(aircraft)]
   } 
+
+  #if waypoint == true and waypoints != "" {
+    box(height: 100%)[
+      #table-json(json(waypoints))
+    ]
+  }
 ]
