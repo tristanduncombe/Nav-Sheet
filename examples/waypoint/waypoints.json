@@ -4,20 +4,20 @@
         "Image": "./examples/waypoint/wyaralong.jpg"
     },
     {
-        "Waypoint": "Boonah",
-        "Image": "./examples/waypoint/boonah.jpg"
+        "Waypoint": "Spicers Peak",
+        "Image": "./examples/waypoint/before_ywck.jpg"
     },
     {
-        "Waypoint": "Lake Moogerah",
-        "Image": "./examples/waypoint/looh.jpg"
+        "Waypoint": "Warrick",
+        "Image": "./examples/waypoint/ywck.jpg"
     },
     {
-        "Waypoint": "Toowoomba",
-        "Image": "./examples/waypoint/ytwb.jpg"
+        "Waypoint": "Auburnvale",
+        "Image": "./examples/waypoint/YMFA.jpg"
     },
     {
-        "Waypoint": "Gatton",
-        "Image": "./examples/waypoint/ygas.jpg"
+        "Waypoint": "Greenmount",
+        "Image": "./examples/waypoint/ygmt.jpg"
     },
     {
       "Waypoint": "Bromleton",
